@@ -3,6 +3,7 @@ from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
 from crewai_tools import SerperDevTool
+from .tools.push_tool import PushNotificationTool
 from pydantic import BaseModel, Field
 
 # Define the models for the output of the tasks
@@ -56,6 +57,7 @@ class StockPicker():
         return Agent(
             config=self.agents_config['stock_picker'], # type: ignore[index]
             verbose=True,
+            tools=[PushNotificationTool()]
          
         )
     
